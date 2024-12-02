@@ -1,5 +1,5 @@
 def slugify(s):
-    return s.strip().lower().replace(" ", "_")
+    return s.strip().lower().replace(" ", "_").replace("-", "_")
 
 
 def main():
