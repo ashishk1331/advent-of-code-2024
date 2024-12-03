@@ -7,3 +7,5 @@ Hi everyone! I'm going to solve the problems in python.
 
 ### Days completed
 - [x] Day 1
+- [x] Day 2
+- [x] Day 3

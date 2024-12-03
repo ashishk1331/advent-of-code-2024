@@ -46,7 +46,7 @@ def main():
     with open("input.txt", "r") as file:
         input = list(map(lambda x: tuple(map(int, x.split())), file.read().split("\n")))
 
-    # print(part_one(input))
+    print(part_one(input))
     print(part_two(input))
 
 
