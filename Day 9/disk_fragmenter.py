@@ -28,16 +28,46 @@ def part_one(inp):
 
 # PART 2:
 def part_two(inp):
-    n = len(inp)
+
     disk = []
+    for index, value in enumerate(inp):
+        if int(value) > 0:
+            disk.extend(["." if index % 2 else str(index // 2)] * int(value))
 
-    for index, val in enumerate(inp):
-        disk.append([
-            '.' if index % 2 else str(index//2),
-            int(val)
-        ])
+    i = j = len(disk) - 1
+    while j > 0:
 
-    return disk
+        while disk[i] != "." and disk[i - 1] == disk[i]:
+            i -= 1
+
+        if disk[i] != ".":
+            file = j - i + 1
+
+            a = b = 0
+            while a < i:
+
+                while disk[a] == "." and disk[a] == disk[a + 1]:
+                    a += 1
+
+                slot = a - b + 1
+                if disk[a] == "." and slot >= file:
+                    break
+
+                a += 1
+                b = a
+
+            for index in range(file):
+                disk[i + index], disk[b + index] = disk[b + index], disk[i + index]
+
+        i -= 1
+        j = i
+
+    score = 0
+    for index, value in enumerate(disk):
+        if value != ".":
+            score += index * int(value)
+
+    return score
 
 
 def main():

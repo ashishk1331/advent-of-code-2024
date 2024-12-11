@@ -21,7 +21,6 @@ def part_one(inp):
 
         return res
 
-
     for total, seq in inp:
         if backtrack(seq, total):
             mus += total
@@ -41,7 +40,7 @@ def main():
         data = file.read().split("\n")
         seq = []
         for each in data:
-            total, nums = list(map(str.strip, each.split(':')))
+            total, nums = list(map(str.strip, each.split(":")))
             total = int(total)
             nums = list(map(int, nums.split()))
             seq.append((total, nums))

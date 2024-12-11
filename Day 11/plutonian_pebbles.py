@@ -1,5 +1,6 @@
 from collections import defaultdict
 
+
 class Node:
     def __init__(self, value, left=None, right=None):
         self.value = value
@@ -69,13 +70,13 @@ def part_one(inp):
 
 # PART 2:
 def part_two(inp):
-    visited = defaultdict(lambda:0)
+    visited = defaultdict(lambda: 0)
 
     for ele in inp:
         visited[ele] += 1
 
     for level in range(75):
-        temp = defaultdict(lambda:0)
+        temp = defaultdict(lambda: 0)
         for key, freq in visited.items():
 
             string = str(key)
@@ -84,11 +85,11 @@ def part_two(inp):
             if key == 0:
                 temp[1] += freq
             elif length % 2:
-                temp[key*2024] += freq
+                temp[key * 2024] += freq
             else:
                 left_val, right_val = int(string[: length // 2]), int(
-                        string[length // 2 :]
-                    )
+                    string[length // 2 :]
+                )
 
                 temp[left_val] += freq
                 temp[right_val] += freq
