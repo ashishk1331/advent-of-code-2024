@@ -30,7 +30,7 @@ def part_one(inp):
 
 # PART 2:
 def part_two(inp):
-    pass
+    return inp
 
 
 def main():
@@ -46,8 +46,8 @@ def main():
             seq.append((total, nums))
         data = seq
 
-    print("Part 1:", part_one(data))
-    # print("Part 2:", part_two(data))
+    # print("Part 1:", part_one(data))
+    print("Part 2:", part_two(data))
 
 
 if __name__ == "__main__":

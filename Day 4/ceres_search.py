@@ -6,37 +6,38 @@ def part_one(inp):
     n, m = len(inp), len(inp[0])
     visited = set()
     directions = [(1, 0), (-1, 0), (0, 1), (0, -1), (1, 1), (1, -1), (-1, 1), (-1, -1)]
+    next_char = {
+        'X': 'M',
+        'M': 'A',
+        'A': 'S'
+    }
 
-    next_char = {"X": "M", "M": "A", "A": "S", "S": "X"}
+    def bfs(row, col):
 
-    def bfs(row: int, col: int, char: str) -> int:
-        q = deque([(row, col, char)])
+        visited.add((row, col))
+
+        if inp[row][col] == 'S':
+            return 1
+
         count = 0
+        for dx, dy in directions:
+            x, y = row + dx, col + dy
 
-        while q:
-            row, col, char = q.popleft()
-            visited.add((row, col))
-
-            if char == "S":
-                count += 1
-
-            for dx, dy in directions:
-                x, y = row + dx, col + dy
-
-                if x in range(n) and y in range(m) and (x, y) not in visited:
-                    if inp[x][y] == "X":
-                        q.append((x, y, "X"))
-                    elif inp[x][y] == next_char[char]:
-                        q.append((x, y, next_char[char]))
+            if (
+                0 <= x < n
+                and 0 <= y < m
+                and next_char[inp[row][col]] == inp[x][y]
+                and (x, y) not in visited
+            ):
+                count += bfs(x, y)
 
         return count
 
     count = 0
-
     for i in range(n):
         for j in range(m):
-            if (i, j) not in visited and inp[i][j] == "X":
-                count += bfs(i, j, "X")
+            if inp[i][j] == "X" and (i, j) not in visited:
+                count += bfs(i, j)
 
     return count
 
