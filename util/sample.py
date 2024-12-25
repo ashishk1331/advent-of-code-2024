@@ -1,10 +1,10 @@
 # PART 1:
-def part_one(data):
+def part_one(inp):
     pass
 
 
 # PART 2:
-def part_two(data):
+def part_two(inp):
     pass
 
 
